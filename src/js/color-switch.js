@@ -15,10 +15,14 @@ const ref = {
 
 let timeoutId = null;
 
-
+let isActive = false;
 
 ref.buttonStart.addEventListener('click', () => {
-
+    if (isActive) {
+        return;
+    }
+    console.log('hello');
+    isActive = true;
     timeoutId = setInterval(() => {
        changeBodyColors()
 
@@ -27,6 +31,7 @@ ref.buttonStart.addEventListener('click', () => {
 });
 
 ref.buttonStop.addEventListener('click', () => {
+    isActive = false;
     clearTimeout(timeoutId);
 
 });
